@@ -1,6 +1,94 @@
-<mvc:View controllerName="industriaui.controller.View1"
+<mvc:View
+    controllerName="industriaui.controller.View1"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
+
+    <Page
+        id="productionPage"
+        title="INDUSTRIA Production Control Center">
+
+        <content>
+
+            <VBox
+                id="productionOverview"
+                class="sapUiMediumMargin">
+
+                <Title
+                    id="overviewTitle"
+                    text="Production Overview"
+                    level="H2"
+                    class="sapUiSmallMarginBottom"/>
+
+                <HBox
+                    id="kpiContainer"
+                    justifyContent="SpaceBetween"
+                    wrap="Wrap">
+
+                    <VBox
+                        id="targetKpi"
+                        class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+
+                        <Title
+                            id="targetKpiTitle"
+                            text="Production Target"/>
+
+                        <ObjectNumber
+                            id="targetKpiNumber"
+                            number="80,000"
+                            unit="L"/>
+
+                    </VBox>
+
+                    <VBox
+                        id="producedKpi"
+                        class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+
+                        <Title
+                            id="producedKpiTitle"
+                            text="Produced"/>
+
+                        <ObjectNumber
+                            id="producedKpiNumber"
+                            number="64,500"
+                            unit="L"/>
+
+                    </VBox>
+
+                    <VBox
+                        id="achievementKpi"
+                        class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+
+                        <Title
+                            id="achievementKpiTitle"
+                            text="Achievement"/>
+
+                        <ObjectNumber
+                            id="achievementKpiNumber"
+                            number="80.6"
+                            unit="%"/>
+
+                    </VBox>
+
+                    <VBox
+                        id="riskKpi"
+                        class="sapUiSmallMarginBottom">
+
+                        <Title
+                            id="riskKpiTitle"
+                            text="Orders At Risk"/>
+
+                        <ObjectNumber
+                            id="riskKpiNumber"
+                            number="2"/>
+
+                    </VBox>
+
+                </HBox>
+
+            </VBox>
+
+        </content>
+
     </Page>
+
 </mvc:View>
