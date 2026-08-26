@@ -4,5 +4,29 @@
         "produced": 64500,
         "achievement": 80.6,
         "ordersAtRisk": 2
-    }
+    },
+
+    "orders": [
+        {
+            "orderId": "PO-1001",
+            "sku": "PAINT-001",
+            "target": 20000,
+            "produced": 16000,
+            "status": "In Progress"
+        },
+        {
+            "orderId": "PO-1002",
+            "sku": "PAINT-002",
+            "target": 40000,
+            "produced": 40000,
+            "status": "Completed"
+        },
+        {
+            "orderId": "PO-1003",
+            "sku": "PAINT-003",
+            "target": 20000,
+            "produced": 8500,
+            "status": "At Risk"
+        }
+    ]
 }

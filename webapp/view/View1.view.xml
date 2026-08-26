@@ -85,6 +85,97 @@
 
                 </HBox>
 
+
+                <Title
+    id="ordersTitle"
+    text="Production Orders"
+    level="H2"
+    class="sapUiMediumMarginTop sapUiSmallMarginBottom"/>
+
+<Table
+    id="productionOrdersTable"
+    items="{production>/orders}"
+    growing="true"
+    growingThreshold="10">
+
+    <headerToolbar>
+        <Toolbar id="ordersToolbar">
+            <Title
+                id="ordersTableTitle"
+                text="Active Orders"/>
+        </Toolbar>
+    </headerToolbar>
+
+    <columns>
+
+        <Column id="orderColumn">
+            <Text
+                id="orderColumnText"
+                text="Order"/>
+        </Column>
+
+        <Column id="skuColumn">
+            <Text
+                id="skuColumnText"
+                text="SKU"/>
+        </Column>
+
+        <Column id="targetColumn">
+            <Text
+                id="targetColumnText"
+                text="Target"/>
+        </Column>
+
+        <Column id="producedColumn">
+            <Text
+                id="producedColumnText"
+                text="Produced"/>
+        </Column>
+
+        <Column id="statusColumn">
+            <Text
+                id="statusColumnText"
+                text="Status"/>
+        </Column>
+
+    </columns>
+
+    <items>
+
+        <ColumnListItem id="productionOrderItem">
+
+            <cells>
+
+                <Text
+                    id="orderNumber"
+                    text="{production>orderId}"/>
+
+                <Text
+                    id="orderSku"
+                    text="{production>sku}"/>
+
+                <ObjectNumber
+                    id="orderTarget"
+                    number="{production>target}"
+                    unit="L"/>
+
+                <ObjectNumber
+                    id="orderProduced"
+                    number="{production>produced}"
+                    unit="L"/>
+
+                <ObjectStatus
+                    id="orderStatus"
+                    text="{production>status}"/>
+
+            </cells>
+
+        </ColumnListItem>
+
+    </items>
+
+</Table>
+
             </VBox>
 
         </content>
