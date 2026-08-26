@@ -19,6 +19,9 @@ sap.ui.define([
             // set the device model
             this.setModel(models.createDeviceModel(), "device");
 
+                // set the production model
+    this.setModel(models.createProductionModel(), "production");
+
             // enable routing
             this.getRouter().initialize();
         }

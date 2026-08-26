@@ -32,10 +32,10 @@
                             id="targetKpiTitle"
                             text="Production Target"/>
 
-                        <ObjectNumber
-                            id="targetKpiNumber"
-                            number="80,000"
-                            unit="L"/>
+                       <ObjectNumber
+    id="targetKpiNumber"
+    number="{production>/dashboard/target}"
+    unit="L"/>
 
                     </VBox>
 
@@ -47,10 +47,10 @@
                             id="producedKpiTitle"
                             text="Produced"/>
 
-                        <ObjectNumber
-                            id="producedKpiNumber"
-                            number="64,500"
-                            unit="L"/>
+                   <ObjectNumber
+    id="producedKpiNumber"
+    number="{production>/dashboard/produced}"
+    unit="L"/>
 
                     </VBox>
 
@@ -63,9 +63,9 @@
                             text="Achievement"/>
 
                         <ObjectNumber
-                            id="achievementKpiNumber"
-                            number="80.6"
-                            unit="%"/>
+    id="achievementKpiNumber"
+    number="{production>/dashboard/achievement}"
+    unit="%"/>
 
                     </VBox>
 
@@ -78,8 +78,8 @@
                             text="Orders At Risk"/>
 
                         <ObjectNumber
-                            id="riskKpiNumber"
-                            number="2"/>
+    id="riskKpiNumber"
+    number="{production>/dashboard/ordersAtRisk}"/>
 
                     </VBox>
 

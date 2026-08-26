@@ -1,0 +1,8 @@
+{
+    "dashboard": {
+        "target": 80000,
+        "produced": 64500,
+        "achievement": 80.6,
+        "ordersAtRisk": 2
+    }
+}
