@@ -72,21 +72,32 @@
         "async": true,
         "viewPath": "industriaui.view"
       },
-      "routes": [
-        {
-          "name": "RouteView1",
-          "pattern": ":?query:",
-          "target": [
+     "routes": [
+    {
+        "name": "RouteView1",
+        "pattern": ":?query:",
+        "target": [
             "TargetView1"
-          ]
-        }
-      ],
-      "targets": {
-        "TargetView1": {
-          "id": "View1",
-          "name": "View1"
-        }
-      }
+        ]
+    },
+    {
+        "name": "RouteLineDetails",
+        "pattern": "line/{lineId}",
+        "target": [
+            "TargetLineDetails"
+        ]
+    }
+],"targets": {
+    "TargetView1": {
+        "id": "View1",
+        "name": "View1"
+    },
+
+    "TargetLineDetails": {
+        "id": "LineDetails",
+        "name": "LineDetails"
+    }
+}
     },
     "rootView": {
       "viewName": "industriaui.view.App",

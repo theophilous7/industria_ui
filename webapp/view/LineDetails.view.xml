@@ -1,0 +1,153 @@
+<mvc:View
+    controllerName="industriaui.controller.LineDetails"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page
+        id="lineDetailsPage"
+        title="Production Line Details"
+        showNavButton="true"
+        navButtonPress=".onNavBack">
+
+        <content>
+
+            <VBox
+                id="lineDetailsContainer"
+                class="sapUiMediumMargin">
+
+                <Title
+                    id="selectedLineTitle"
+                    text="Production Line"/>
+
+                <ObjectHeader
+                    id="lineHeader"
+                    title="{production>lineName}"
+                    number="{production>produced}"
+                    numberUnit="L">
+
+                    <attributes>
+
+                        <ObjectAttribute
+                            id="lineSkuAttribute"
+                            title="SKU"
+                            text="{production>sku}"/>
+
+                        <ObjectAttribute
+                            id="lineTargetAttribute"
+                            title="Shift Target"
+                            text="{production>shiftTarget} L"/>
+
+                    </attributes>
+
+                    <statuses>
+
+                        <ObjectStatus
+                            id="lineDetailStatus"
+                            text="{production>status}"/>
+
+                    </statuses>
+
+                </ObjectHeader>
+
+
+                <Title
+                    id="updatesTitle"
+                    text="2-Hour Production Updates"
+                    level="H2"
+                    class="sapUiMediumMarginTop sapUiSmallMarginBottom"/>
+
+
+                <Table
+                    id="updatesTable"
+                    items="{production>updates}">
+
+                    <columns>
+
+                        <Column id="updateTimeColumn">
+                            <Text
+                                id="updateTimeHeader"
+                                text="Time"/>
+                        </Column>
+
+                        <Column id="periodProductionColumn">
+                            <Text
+                                id="periodProductionHeader"
+                                text="Period Production"/>
+                        </Column>
+
+                        <Column id="cumulativeColumn">
+                            <Text
+                                id="cumulativeHeader"
+                                text="Cumulative"/>
+                        </Column>
+
+                        <Column id="plannedColumn">
+                            <Text
+                                id="plannedHeader"
+                                text="Planned"/>
+                        </Column>
+
+                        <Column id="varianceColumn">
+                            <Text
+                                id="varianceHeader"
+                                text="Variance"/>
+                        </Column>
+
+                        <Column id="updateStatusColumn">
+                            <Text
+                                id="updateStatusHeader"
+                                text="Status"/>
+                        </Column>
+
+                    </columns>
+
+
+                    <items>
+
+                        <ColumnListItem id="updateItem">
+
+                            <cells>
+
+                                <Text
+                                    id="updateTime"
+                                    text="{production>time}"/>
+
+                                <ObjectNumber
+                                    id="periodProduction"
+                                    number="{production>periodProduction}"
+                                    unit="L"/>
+
+                                <ObjectNumber
+                                    id="cumulativeProduction"
+                                    number="{production>cumulativeProduction}"
+                                    unit="L"/>
+
+                                <ObjectNumber
+                                    id="plannedProduction"
+                                    number="{production>plannedProduction}"
+                                    unit="L"/>
+
+                                <ObjectNumber
+                                    id="variance"
+                                    number="{production>variance}"
+                                    unit="L"/>
+
+                                <ObjectStatus
+                                    id="updateStatus"
+                                    text="{production>status}"/>
+
+                            </cells>
+
+                        </ColumnListItem>
+
+                    </items>
+
+                </Table>
+
+            </VBox>
+
+        </content>
+
+    </Page>
+
+</mvc:View>

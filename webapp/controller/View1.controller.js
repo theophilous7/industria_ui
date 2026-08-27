@@ -24,7 +24,26 @@ sap.ui.define([
                 default:
                     return "None";
             }
-        }
+        },
+
+
+        onLinePress(oEvent) {
+
+    const oItem = oEvent.getSource();
+
+    const oContext =
+        oItem.getBindingContext("production");
+
+    const oLine =
+        oContext.getObject();
+
+    this.getOwnerComponent()
+        .getRouter()
+        .navTo("RouteLineDetails", {
+            lineId: oLine.lineId
+        });
+
+}
 
     });
 });

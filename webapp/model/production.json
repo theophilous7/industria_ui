@@ -37,31 +37,105 @@
             "sku": "PAINT-001",
             "shiftTarget": 20000,
             "produced": 18500,
-            "status": "Running"
+            "status": "Running",
+
+            "updates": [
+                {
+                    "time": "08:00",
+                    "periodProduction": 3200,
+                    "cumulativeProduction": 3200,
+                    "plannedProduction": 3333,
+                    "variance": -133,
+                    "status": "Running",
+                    "issue": "",
+                    "downtime": 0,
+                    "etr": "",
+                    "supervisor": "John",
+                    "remarks": "Production started normally"
+                },
+                {
+                    "time": "10:00",
+                    "periodProduction": 3300,
+                    "cumulativeProduction": 6500,
+                    "plannedProduction": 6667,
+                    "variance": -167,
+                    "status": "Running",
+                    "issue": "",
+                    "downtime": 0,
+                    "etr": "",
+                    "supervisor": "John",
+                    "remarks": "Production progressing normally"
+                },
+                {
+                    "time": "12:00",
+                    "periodProduction": 3300,
+                    "cumulativeProduction": 9800,
+                    "plannedProduction": 10000,
+                    "variance": -200,
+                    "status": "Running",
+                    "issue": "",
+                    "downtime": 0,
+                    "etr": "",
+                    "supervisor": "John",
+                    "remarks": "Slightly behind plan"
+                },
+                {
+                    "time": "14:00",
+                    "periodProduction": 3700,
+                    "cumulativeProduction": 13500,
+                    "plannedProduction": 13333,
+                    "variance": 167,
+                    "status": "Running",
+                    "issue": "",
+                    "downtime": 0,
+                    "etr": "",
+                    "supervisor": "John",
+                    "remarks": "Production recovered"
+                },
+                {
+                    "time": "16:00",
+                    "periodProduction": 5000,
+                    "cumulativeProduction": 18500,
+                    "plannedProduction": 16667,
+                    "variance": 1833,
+                    "status": "Running",
+                    "issue": "",
+                    "downtime": 0,
+                    "etr": "",
+                    "supervisor": "John",
+                    "remarks": "High production output"
+                }
+            ]
         },
+
         {
             "lineId": "LINE-02",
             "lineName": "Line 2",
             "sku": "PAINT-002",
             "shiftTarget": 20000,
             "produced": 16000,
-            "status": "Running"
+            "status": "Running",
+            "updates": []
         },
+
         {
             "lineId": "LINE-03",
             "lineName": "Line 3",
             "sku": "PAINT-003",
             "shiftTarget": 20000,
             "produced": 12000,
-            "status": "Delayed"
+            "status": "Delayed",
+            "updates": []
         },
+
         {
             "lineId": "LINE-04",
             "lineName": "Line 4",
             "sku": "PAINT-004",
             "shiftTarget": 20000,
             "produced": 8000,
-            "status": "Down"
+            "status": "Down",
+            "updates": []
         }
     ]
 }

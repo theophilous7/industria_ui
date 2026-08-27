@@ -231,7 +231,10 @@
 
     <items>
 
-        <ColumnListItem id="productionLineItem">
+     <ColumnListItem
+    id="productionLineItem"
+    type="Active"
+    press=".onLinePress">
 
             <cells>
 
