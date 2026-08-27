@@ -28,5 +28,40 @@
             "produced": 8500,
             "status": "At Risk"
         }
+    ],
+
+    "productionLines": [
+        {
+            "lineId": "LINE-01",
+            "lineName": "Line 1",
+            "sku": "PAINT-001",
+            "shiftTarget": 20000,
+            "produced": 18500,
+            "status": "Running"
+        },
+        {
+            "lineId": "LINE-02",
+            "lineName": "Line 2",
+            "sku": "PAINT-002",
+            "shiftTarget": 20000,
+            "produced": 16000,
+            "status": "Running"
+        },
+        {
+            "lineId": "LINE-03",
+            "lineName": "Line 3",
+            "sku": "PAINT-003",
+            "shiftTarget": 20000,
+            "produced": 12000,
+            "status": "Delayed"
+        },
+        {
+            "lineId": "LINE-04",
+            "lineName": "Line 4",
+            "sku": "PAINT-004",
+            "shiftTarget": 20000,
+            "produced": 8000,
+            "status": "Down"
+        }
     ]
 }

@@ -175,7 +175,99 @@
     </items>
 
 </Table>
+<Title
+    id="linesTitle"
+    text="Manufacturing Lines"
+    level="H2"
+    class="sapUiMediumMarginTop sapUiSmallMarginBottom"/>
 
+<Table
+    id="productionLinesTable"
+    items="{production>/productionLines}"
+    growing="true"
+    growingThreshold="10">
+
+    <headerToolbar>
+        <Toolbar id="linesToolbar">
+            <Title
+                id="linesTableTitle"
+                text="Current Shift"/>
+        </Toolbar>
+    </headerToolbar>
+
+    <columns>
+
+        <Column id="lineColumn">
+            <Text
+                id="lineColumnText"
+                text="Line"/>
+        </Column>
+
+        <Column id="lineSkuColumn">
+            <Text
+                id="lineSkuColumnText"
+                text="SKU"/>
+        </Column>
+
+        <Column id="lineTargetColumn">
+            <Text
+                id="lineTargetColumnText"
+                text="Shift Target"/>
+        </Column>
+
+        <Column id="lineProducedColumn">
+            <Text
+                id="lineProducedColumnText"
+                text="Produced"/>
+        </Column>
+
+        <Column id="lineStatusColumn">
+            <Text
+                id="lineStatusColumnText"
+                text="Status"/>
+        </Column>
+
+    </columns>
+
+    <items>
+
+        <ColumnListItem id="productionLineItem">
+
+            <cells>
+
+                <Text
+                    id="lineName"
+                    text="{production>lineName}"/>
+
+                <Text
+                    id="lineSku"
+                    text="{production>sku}"/>
+
+                <ObjectNumber
+                    id="lineTarget"
+                    number="{production>shiftTarget}"
+                    unit="L"/>
+
+                <ObjectNumber
+                    id="lineProduced"
+                    number="{production>produced}"
+                    unit="L"/>
+
+               <ObjectStatus
+    id="lineStatus"
+    text="{production>status}"
+    state="{
+        path: 'production>status',
+        formatter: '.getStatusState'
+    }"/>
+
+            </cells>
+
+        </ColumnListItem>
+
+    </items>
+
+</Table>
             </VBox>
 
         </content>
