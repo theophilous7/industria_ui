@@ -49,6 +49,19 @@ sap.ui.define([
 
         },
 
+
+        getVarianceState(iVariance) {
+
+    if (iVariance > 0) {
+        return "Success";
+    }
+
+    if (iVariance < 0) {
+        return "Error";
+    }
+
+    return "None";
+},
         onNavBack() {
 
             this.getOwnerComponent()

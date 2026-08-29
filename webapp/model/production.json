@@ -105,7 +105,8 @@
                     "supervisor": "John",
                     "remarks": "High production output"
                 }
-            ]
+            ],
+             "incidents": []    
         },
 
         {
@@ -115,7 +116,8 @@
             "shiftTarget": 20000,
             "produced": 16000,
             "status": "Running",
-            "updates": []
+            "updates": [],
+             "incidents": []
         },
 
         {
@@ -125,7 +127,21 @@
             "shiftTarget": 20000,
             "produced": 12000,
             "status": "Delayed",
-            "updates": []
+            "updates": [],
+
+
+
+            "incidents": [
+    {
+        "incidentId": "INC-001",
+        "type": "Mechanical",
+        "description": "Transfer pump failure",
+        "startTime": "14:10",
+        "etr": "14:45",
+        "status": "Open",
+        "reportedBy": "Production Supervisor"
+    }
+]
         },
 
         {
@@ -135,7 +151,8 @@
             "shiftTarget": 20000,
             "produced": 8000,
             "status": "Down",
-            "updates": []
+            "updates": [],
+            "incidents": []
         }
     ]
 }

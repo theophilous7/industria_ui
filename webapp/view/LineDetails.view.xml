@@ -19,12 +19,12 @@
                     id="selectedLineTitle"
                     text="Production Line"/>
 
-                <ObjectHeader
+               
+ <ObjectHeader
                     id="lineHeader"
                     title="{production>lineName}"
                     number="{production>produced}"
                     numberUnit="L">
-
                     <attributes>
 
                         <ObjectAttribute
@@ -46,8 +46,113 @@
                             text="{production>status}"/>
 
                     </statuses>
+                        </ObjectHeader>
+                
 
-                </ObjectHeader>
+
+                <Panel
+    id="productionProgressPanel"
+    headerText="Shift Progress"
+    class="sapUiMediumMarginTop">
+
+    <VBox
+        id="productionProgressContainer"
+        class="sapUiMediumMargin">
+
+        <ObjectNumber
+            id="progressProduced"
+            number="{production>produced}"
+            unit="L"/>
+
+        <ProgressIndicator
+            id="productionProgress"
+            percentValue="{= ${production>produced} / ${production>shiftTarget} * 100 }"
+            displayValue="{= ${production>produced} + ' L / ' + ${production>shiftTarget} + ' L' }"
+            state="Success"/>
+
+    </VBox>
+
+</Panel>
+
+
+<Title
+    id="incidentsTitle"
+    text="Production Incidents"
+    level="H2"
+    class="sapUiMediumMarginTop sapUiSmallMarginBottom"/>
+
+<Table
+    id="incidentsTable"
+    items="{production>incidents}"
+    noDataText="No incidents reported">
+
+    <columns>
+
+        <Column id="incidentTypeColumn">
+            <Text
+                id="incidentTypeHeader"
+                text="Type"/>
+        </Column>
+
+        <Column id="incidentDescriptionColumn">
+            <Text
+                id="incidentDescriptionHeader"
+                text="Issue"/>
+        </Column>
+
+        <Column id="incidentStartColumn">
+            <Text
+                id="incidentStartHeader"
+                text="Started"/>
+        </Column>
+
+        <Column id="incidentEtrColumn">
+            <Text
+                id="incidentEtrHeader"
+                text="ETR"/>
+        </Column>
+
+        <Column id="incidentStatusColumn">
+            <Text
+                id="incidentStatusHeader"
+                text="Status"/>
+        </Column>
+
+    </columns>
+
+    <items>
+
+        <ColumnListItem id="incidentItem">
+
+            <cells>
+
+                <Text
+                    id="incidentType"
+                    text="{production>type}"/>
+
+                <Text
+                    id="incidentDescription"
+                    text="{production>description}"/>
+
+                <Text
+                    id="incidentStart"
+                    text="{production>startTime}"/>
+
+                <Text
+                    id="incidentEtr"
+                    text="{production>etr}"/>
+
+                <ObjectStatus
+                    id="incidentStatus"
+                    text="{production>status}"/>
+
+            </cells>
+
+        </ColumnListItem>
+
+    </items>
+
+</Table>
 
 
                 <Title
@@ -99,6 +204,7 @@
                                 text="Status"/>
                         </Column>
 
+       
                     </columns>
 
 
@@ -127,10 +233,14 @@
                                     number="{production>plannedProduction}"
                                     unit="L"/>
 
-                                <ObjectNumber
-                                    id="variance"
-                                    number="{production>variance}"
-                                    unit="L"/>
+                               <ObjectNumber
+    id="variance"
+    number="{production>variance}"
+    unit="L"
+    state="{
+        path: 'production>variance',
+        formatter: '.getVarianceState'
+    }"/>
 
                                 <ObjectStatus
                                     id="updateStatus"

@@ -138,6 +138,8 @@
                 text="Status"/>
         </Column>
 
+   
+
     </columns>
 
     <items>
@@ -227,6 +229,13 @@
                 text="Status"/>
         </Column>
 
+                              <Column id="lineProgressColumn">
+    <Text
+        id="lineProgressColumnText"
+        text="Progress"/>
+</Column>
+
+
     </columns>
 
     <items>
@@ -259,6 +268,16 @@
                <ObjectStatus
     id="lineStatus"
     text="{production>status}"
+    state="{
+        path: 'production>status',
+        formatter: '.getStatusState'
+    }"/>
+
+
+    <ProgressIndicator
+    id="lineProgress"
+    percentValue="{= ${production>produced} / ${production>shiftTarget} * 100 }"
+    displayValue="{= ${production>produced} + ' / ' + ${production>shiftTarget} + ' L' }"
     state="{
         path: 'production>status',
         formatter: '.getStatusState'
