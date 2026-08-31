@@ -25,7 +25,24 @@ sap.ui.define([
                     return "None";
             }
         },
+    
 
+
+
+             onOrderPress(oEvent) {
+
+    const oSelectedOrder =
+        oEvent.getSource()
+            .getBindingContext("production")
+            .getObject();
+
+    this.getOwnerComponent()
+        .getRouter()
+        .navTo("RouteOrderDetails", {
+            orderId: oSelectedOrder.orderId
+        });
+
+},
 
         onLinePress(oEvent) {
 

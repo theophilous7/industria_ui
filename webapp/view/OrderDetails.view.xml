@@ -1,0 +1,66 @@
+<mvc:View
+    controllerName="industriaui.controller.OrderDetails"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page
+        id="orderDetailsPage"
+        title="Production Order Details"
+        showNavButton="true"
+        navButtonPress=".onNavBack">
+
+        <content>
+
+            <VBox
+                id="orderDetailsContainer"
+                class="sapUiMediumMargin">
+
+                <ObjectHeader
+                    id="orderDetailsHeader"
+                    title="{production>orderId}"
+                    number="{production>produced}"
+                    numberUnit="L">
+
+                    <attributes>
+
+                        <ObjectAttribute
+                            id="orderSkuAttribute"
+                            title="SKU"
+                            text="{production>sku}"/>
+
+                        <ObjectAttribute
+                            id="orderTargetAttribute"
+                            title="Target"
+                            text="{production>target} L"/>
+
+                    </attributes>
+
+                    <statuses>
+
+                        <ObjectStatus
+                            id="orderDetailsStatus"
+                            text="{production>status}"/>
+
+                    </statuses>
+
+                </ObjectHeader>
+
+                <Title
+                    id="orderProgressTitle"
+                    text="Production Progress"
+                    level="H2"
+                    class="sapUiMediumMarginTop sapUiSmallMarginBottom"/>
+
+                <ProgressIndicator
+                    id="orderProgressIndicator"
+                    percentValue="{= ${production>produced} / ${production>target} * 100 }"
+                    displayValue="{= ${production>produced} + ' / ' + ${production>target} + ' L' }"
+                    state="Success"/>
+
+            </VBox>
+
+        </content>
+
+    </Page>
+
+</mvc:View>

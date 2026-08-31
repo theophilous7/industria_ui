@@ -144,7 +144,8 @@
 
     <items>
 
-        <ColumnListItem id="productionOrderItem">
+        <ColumnListItem id="productionOrderItem"   type="Active"
+    press=".onOrderPress">
 
             <cells>
 
@@ -177,6 +178,7 @@
     </items>
 
 </Table>
+
 <Title
     id="linesTitle"
     text="Manufacturing Lines"

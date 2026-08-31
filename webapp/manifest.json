@@ -86,6 +86,14 @@
         "target": [
             "TargetLineDetails"
         ]
+    },
+
+    {
+        "name": "RouteOrderDetails",
+        "pattern": "order/{orderId}",
+        "target": [
+            "TargetOrderDetails"
+        ]
     }
 ],"targets": {
     "TargetView1": {
@@ -96,6 +104,11 @@
     "TargetLineDetails": {
         "id": "LineDetails",
         "name": "LineDetails"
+    },
+
+     "TargetOrderDetails": {
+        "id": "OrderDetails",
+        "name": "OrderDetails"
     }
 }
     },
