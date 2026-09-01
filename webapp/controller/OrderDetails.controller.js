@@ -16,8 +16,8 @@ sap.ui.define([
                     this._onRouteMatched,
                     this
                 );
-
         },
+
 
         _onRouteMatched(oEvent) {
 
@@ -38,17 +38,47 @@ sap.ui.define([
 
             if (oSelectedOrder) {
 
-                this.getView().setBindingContext(
-                    oModel.createBindingContext(
-                        "/orders/" +
-                        aOrders.indexOf(oSelectedOrder)
-                    ),
-                    "production"
-                );
+                const iIndex =
+                    aOrders.indexOf(oSelectedOrder);
 
+                const sPath =
+                    "/orders/" + iIndex;
+
+                this.getView().bindElement({
+                    path: sPath,
+                    model: "production"
+                });
             }
-
         },
+
+
+        getStatusState(sStatus) {
+
+            switch (sStatus) {
+
+                case "Running":
+                case "AVAILABLE":
+                    return "Success";
+
+                case "Delayed":
+                case "At Risk":
+                    return "Warning";
+
+                case "Down":
+                case "SHORTAGE":
+                    return "Error";
+
+                case "Completed":
+                    return "Success";
+
+                case "In Progress":
+                    return "Information";
+
+                default:
+                    return "None";
+            }
+        },
+
 
         onNavBack() {
 
@@ -56,11 +86,7 @@ sap.ui.define([
                 .getRouter()
                 .navTo("RouteView1");
 
-        },
-
-
-
-   
+        }
 
     });
 

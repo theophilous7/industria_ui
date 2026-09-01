@@ -1,66 +1,225 @@
 <mvc:View
-    controllerName="industriaui.controller.OrderDetails"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
+controllerName="industriaui.controller.OrderDetails"
+xmlns:mvc="sap.ui.core.mvc"
+xmlns="sap.m">
 
-    <Page
-        id="orderDetailsPage"
-        title="Production Order Details"
-        showNavButton="true"
-        navButtonPress=".onNavBack">
+<Page
+    id="orderDetailsPage"
+    title="Production Order Details"
+    showNavButton="true"
+    navButtonPress=".onNavBack">
 
-        <content>
+    <content>
 
-            <VBox
-                id="orderDetailsContainer"
-                class="sapUiMediumMargin">
+        <VBox
+            id="orderDetailsContainer"
+            class="sapUiMediumMargin">
 
-                <ObjectHeader
-                    id="orderDetailsHeader"
-                    title="{production>orderId}"
-                    number="{production>produced}"
-                    numberUnit="L">
+            <!-- ORDER HEADER -->
 
-                    <attributes>
+            <ObjectHeader
+                id="orderDetailsHeader"
+                title="{production>orderId}"
+                intro="{production>sku}"
+                number="{production>produced}"
+                numberUnit="{production>unit}">
 
-                        <ObjectAttribute
-                            id="orderSkuAttribute"
-                            title="SKU"
-                            text="{production>sku}"/>
+                <attributes>
 
-                        <ObjectAttribute
-                            id="orderTargetAttribute"
-                            title="Target"
-                            text="{production>target} L"/>
+                    <ObjectAttribute
+                        id="orderTargetAttribute"
+                        title="Target"
+                        text="{production>target} {production>unit}"/>
 
-                    </attributes>
+                    <ObjectAttribute
+                        id="orderDueDateAttribute"
+                        title="Due Date"
+                        text="{production>dueDate}"/>
 
-                    <statuses>
+                    <ObjectAttribute
+                        id="orderPriorityAttribute"
+                        title="Priority"
+                        text="{production>priority}"/>
 
-                        <ObjectStatus
-                            id="orderDetailsStatus"
-                            text="{production>status}"/>
+                </attributes>
 
-                    </statuses>
+                <statuses>
 
-                </ObjectHeader>
+                    <ObjectStatus
+                        id="orderDetailsStatus"
+                        text="{production>status}"
+                        state="{
+                            path: 'production>status',
+                            formatter: '.getStatusState'
+                        }"/>
 
-                <Title
-                    id="orderProgressTitle"
-                    text="Production Progress"
-                    level="H2"
-                    class="sapUiMediumMarginTop sapUiSmallMarginBottom"/>
+                </statuses>
 
-                <ProgressIndicator
-                    id="orderProgressIndicator"
-                    percentValue="{= ${production>produced} / ${production>target} * 100 }"
-                    displayValue="{= ${production>produced} + ' / ' + ${production>target} + ' L' }"
-                    state="Success"/>
+            </ObjectHeader>
+<Text
+    id="debugOrderBinding"
+    text="{= ${production>orderId} + ' | ' + ${production>sku} }"/>
 
-            </VBox>
+            <!-- PRODUCTION PROGRESS -->
 
-        </content>
+            <Title
+                id="orderProgressTitle"
+                text="Production Progress"
+                level="H2"
+                class="sapUiMediumMarginTop sapUiSmallMarginBottom"/>
 
-    </Page>
+            <ProgressIndicator
+                id="orderProgressIndicator"
+                percentValue="{= ${production>produced} / ${production>target} * 100 }"
+                displayValue="{= ${production>produced} + ' / ' + ${production>target} + ' ' + ${production>unit} }"
+                state="{
+                    path: 'production>status',
+                    formatter: '.getStatusState'
+                }"/>
+
+
+            <!-- KEY INFORMATION -->
+
+            <HBox
+                id="orderInformationContainer"
+                wrap="Wrap"
+                justifyContent="SpaceBetween"
+                class="sapUiMediumMarginTop">
+
+                <VBox
+                    id="orderTargetBox"
+                    class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+
+                    <Title
+                        id="orderTargetLabel"
+                        text="Target"/>
+
+                    <ObjectNumber
+                        id="orderTargetNumber"
+                        number="{production>target}"
+                        unit="{production>unit}"/>
+
+                </VBox>
+
+
+                <VBox
+                    id="orderProducedBox"
+                    class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+
+                    <Title
+                        id="orderProducedLabel"
+                        text="Produced"/>
+
+                    <ObjectNumber
+                        id="orderProducedNumber"
+                        number="{production>produced}"
+                        unit="{production>unit}"/>
+
+                </VBox>
+
+
+                <VBox
+                    id="orderRemainingBox"
+                    class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+
+                    <Title
+                        id="orderRemainingLabel"
+                        text="Remaining"/>
+
+                    <ObjectNumber
+                        id="orderRemainingNumber"
+                        number="{= ${production>target} - ${production>produced} }"
+                        unit="{production>unit}"/>
+
+                </VBox>
+
+            </HBox>
+
+
+        <!-- MATERIAL READINESS -->
+
+<Title
+    id="orderMaterialsTitle"
+    text="Material Readiness"
+    level="H2"
+    class="sapUiMediumMarginTop sapUiSmallMarginBottom"/>
+    
+
+<Table
+    id="orderMaterialsTable"
+items="{production>materials}"
+    growing="true"
+    growingThreshold="10"
+>
+
+<columns>
+
+    <Column id="orderMaterialNameColumn">
+        <Text
+            id="orderMaterialNameHeader"
+            text="Material"/>
+    </Column>
+
+    <Column id="orderMaterialRequiredColumn">
+        <Text
+            id="orderMaterialRequiredHeader"
+            text="Required"/>
+    </Column>
+
+    <Column id="orderMaterialAvailableColumn">
+        <Text
+            id="orderMaterialAvailableHeader"
+            text="Available"/>
+    </Column>
+
+    <Column id="orderMaterialStatusColumn">
+        <Text
+            id="orderMaterialStatusHeader"
+            text="Status"/>
+    </Column>
+
+</columns>
+
+<items>
+
+    <ColumnListItem id="orderMaterialItem">
+
+        <cells>
+
+            <Text
+                id="orderMaterialNameText"
+                text="{production>material}"/>
+
+            <ObjectNumber
+                id="orderMaterialRequiredNumber"
+                number="{production>required}"
+                unit="{production>unit}"/>
+
+            <ObjectNumber
+                id="orderMaterialAvailableNumber"
+                number="{production>available}"
+                unit="{production>unit}"/>
+
+            <ObjectStatus
+    id="orderMaterialStatus"
+    text="{production>status}"
+    state="{
+        path: 'production>status',
+        formatter: '.getStatusState'
+    }"/>
+
+        </cells>
+
+    </ColumnListItem>
+
+</items>
+       
+</Table>
+
+        </VBox>
+
+    </content>
+
+</Page>
 
 </mvc:View>

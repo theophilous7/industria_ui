@@ -8,25 +8,51 @@
 
     "orders": [
         {
-            "orderId": "PO-1001",
-            "sku": "PAINT-001",
-            "target": 20000,
-            "produced": 16000,
-            "status": "In Progress"
+    "orderId": "PO-1001",
+    "sku": "PAINT-001",
+    "target": 20000,
+    "produced": 16000,
+    "unit": "L",
+    "status": "In Progress",
+    "materials": [
+        {
+            "material": "Acrylic Resin",
+            "required": 12000,
+            "available": 15000,
+            "unit": "KG",
+            "status": "AVAILABLE"
         },
+        {
+            "material": "Titanium Dioxide",
+            "required": 2500,
+            "available": 1800,
+            "unit": "KG",
+            "status": "SHORTAGE"
+        },
+        {
+            "material": "Additive A",
+            "required": 600,
+            "available": 800,
+            "unit": "KG",
+            "status": "AVAILABLE"
+        }
+    ]
+    },
         {
             "orderId": "PO-1002",
             "sku": "PAINT-002",
             "target": 40000,
             "produced": 40000,
-            "status": "Completed"
+            "status": "Completed",
+            "materials":[]
         },
         {
             "orderId": "PO-1003",
             "sku": "PAINT-003",
             "target": 20000,
             "produced": 8500,
-            "status": "At Risk"
+            "status": "At Risk",
+            "materials":[]
         }
     ],
 
