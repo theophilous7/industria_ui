@@ -1,7 +1,452 @@
-<mvc:View controllerName="industriaui.controller.App"
+<mvc:View
+    controllerName="industriaui.controller.App"
     displayBlock="true"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-    <App id="app">
-    </App>
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt">
+
+    <tnt:ToolPage
+        id="mainToolPage">
+
+        <!-- HEADER -->
+        <tnt:header>
+
+            <tnt:ToolHeader
+                id="mainToolHeader">
+
+                <Button
+                    id="sideNavigationToggle"
+                    icon="sap-icon://menu2"
+                    type="Transparent"
+                    tooltip="Toggle Navigation"
+                    press=".onSideNavToggle"/>
+
+                <Title
+                    id="applicationTitle"
+                    text="INDUSTRIA ERP"
+                    level="H2"/>
+
+                <ToolbarSpacer
+                    id="headerSpacer"/>
+
+                <Text
+                    id="applicationArea"
+                    text="Production Process Centre"/>
+
+            </tnt:ToolHeader>
+
+        </tnt:header>
+
+
+        <!-- SIDE NAVIGATION -->
+        <tnt:sideContent>
+
+            <tnt:SideNavigation
+                id="sideNavigation"
+                expanded="true">
+
+                <tnt:item>
+
+                    <tnt:NavigationList
+                        id="mainNavigationList">
+
+                        <!-- OVERVIEW -->
+
+                        <tnt:NavigationListItem
+                            id="navOverview"
+                            text="Overview"
+                            icon="sap-icon://home"
+                            key="overview"/>
+
+
+                        <!-- PRODUCTION -->
+
+                        <tnt:NavigationListItem
+                            id="navProduction"
+                            text="Production"
+                            icon="sap-icon://factory">
+
+                            <tnt:items>
+
+                                <!-- PLANNING -->
+
+                                <tnt:NavigationListItem
+                                    id="navPlanning"
+                                    text="Planning"
+                                    icon="sap-icon://calendar">
+
+                                    <tnt:items>
+
+                                        <tnt:NavigationListItem
+                                            id="navProductionOrders"
+                                            text="Production Orders"
+                                            icon="sap-icon://document-text"
+                                            key="productionOrders"/>
+
+                                        <tnt:NavigationListItem
+                                            id="navProductionSchedule"
+                                            text="Production Schedule"
+                                            icon="sap-icon://date-time"
+                                            key="productionSchedule"/>
+
+                                        <tnt:NavigationListItem
+                                            id="navCapacityPlanning"
+                                            text="Capacity Planning"
+                                            icon="sap-icon://bar-chart"
+                                            key="capacityPlanning"/>
+
+                                    </tnt:items>
+
+                                </tnt:NavigationListItem>
+
+
+                                <!-- EXECUTION -->
+
+                                <tnt:NavigationListItem
+                                    id="navExecution"
+                                    text="Execution"
+                                    icon="sap-icon://process">
+
+                                    <tnt:items>
+
+                                        <tnt:NavigationListItem
+                                            id="navActiveProduction"
+                                            text="Active Production"
+                                            icon="sap-icon://activity-2"
+                                            key="activeProduction"/>
+
+                                        <tnt:NavigationListItem
+                                            id="navProductionLines"
+                                            text="Production Lines"
+                                            icon="sap-icon://factory"
+                                            key="productionLines"/>
+
+                                        <tnt:NavigationListItem
+                                            id="navProductionBatches"
+                                            text="Production Batches"
+                                            icon="sap-icon://batch-processing"
+                                            key="productionBatches"/>
+
+                                        <tnt:NavigationListItem
+                                            id="navProductionUpdates"
+                                            text="Production Updates"
+                                            icon="sap-icon://edit"
+                                            key="productionUpdates"/>
+
+                                    </tnt:items>
+
+                                </tnt:NavigationListItem>
+
+
+                                <!-- SHIFT OPERATIONS -->
+
+                                <tnt:NavigationListItem
+                                    id="navShiftOperations"
+                                    text="Shift Operations"
+                                    icon="sap-icon://employee">
+
+                                    <tnt:items>
+
+                                        <tnt:NavigationListItem
+                                            id="navCurrentShift"
+                                            text="Current Shift"
+                                            icon="sap-icon://time-entry-request"
+                                            key="currentShift"/>
+
+                                        <tnt:NavigationListItem
+                                            id="navShiftHandover"
+                                            text="Shift Handover"
+                                            icon="sap-icon://journey-change"
+                                            key="shiftHandover"/>
+
+                                    </tnt:items>
+
+                                </tnt:NavigationListItem>
+
+
+                                <!-- ISSUES -->
+
+                                <tnt:NavigationListItem
+                                    id="navProductionIssues"
+                                    text="Issues"
+                                    icon="sap-icon://alert">
+
+                                    <tnt:items>
+
+                                        <tnt:NavigationListItem
+                                            id="navProductionIncidents"
+                                            text="Production Incidents"
+                                            icon="sap-icon://incident"
+                                            key="productionIncidents"/>
+
+                                        <tnt:NavigationListItem
+                                            id="navDowntime"
+                                            text="Downtime"
+                                            icon="sap-icon://lateness"
+                                            key="downtime"/>
+
+                                    </tnt:items>
+
+                                </tnt:NavigationListItem>
+
+
+                                <!-- PERFORMANCE -->
+
+                                <tnt:NavigationListItem
+                                    id="navPerformance"
+                                    text="Performance"
+                                    icon="sap-icon://business-objects-experience">
+
+                                    <tnt:items>
+
+                                        <tnt:NavigationListItem
+                                            id="navProductionKPIs"
+                                            text="Production KPIs"
+                                            icon="sap-icon://kpi-managing-my-area"
+                                            key="productionKPIs"/>
+
+                                        <tnt:NavigationListItem
+                                            id="navVarianceYield"
+                                            text="Variance &amp; Yield"
+                                            icon="sap-icon://line-chart"
+                                            key="varianceYield"/>
+
+                                    </tnt:items>
+
+                                </tnt:NavigationListItem>
+
+                            </tnt:items>
+
+                        </tnt:NavigationListItem>
+
+
+                        <!-- MATERIALS & SUPPLY -->
+
+                        <tnt:NavigationListItem
+                            id="navMaterialsSupply"
+                            text="Materials &amp; Supply"
+                            icon="sap-icon://shipping-status">
+
+                            <tnt:items>
+
+                                <tnt:NavigationListItem
+                                    id="navMaterialReadiness"
+                                    text="Material Readiness"
+                                    icon="sap-icon://checklist"
+                                    key="materialReadiness"/>
+
+                                <tnt:NavigationListItem
+                                    id="navMaterialAvailability"
+                                    text="Material Availability"
+                                    icon="sap-icon://inventory"
+                                    key="materialAvailability"/>
+
+                                <tnt:NavigationListItem
+                                    id="navMaterialRequirements"
+                                    text="Material Requirements"
+                                    icon="sap-icon://requirement"
+                                    key="materialRequirements"/>
+
+                            </tnt:items>
+
+                        </tnt:NavigationListItem>
+
+
+                        <!-- QUALITY CONTROL -->
+
+                        <tnt:NavigationListItem
+                            id="navQuality"
+                            text="Quality Control"
+                            icon="sap-icon://quality-issue">
+
+                            <tnt:items>
+
+                                <tnt:NavigationListItem
+                                    id="navBatchQueue"
+                                    text="Batch Queue"
+                                    icon="sap-icon://list"
+                                    key="batchQueue"/>
+
+                                <tnt:NavigationListItem
+                                    id="navLaboratory"
+                                    text="Laboratory Analysis"
+                                    icon="sap-icon://lab"
+                                    key="laboratory"/>
+
+                                <tnt:NavigationListItem
+                                    id="navQCResults"
+                                    text="QC Results"
+                                    icon="sap-icon://inspection"
+                                    key="qcResults"/>
+
+                                <tnt:NavigationListItem
+                                    id="navNonConformance"
+                                    text="Non-Conformance"
+                                    icon="sap-icon://error-warning"
+                                    key="nonConformance"/>
+
+                                <tnt:NavigationListItem
+                                    id="navReworkRejection"
+                                    text="Rework &amp; Rejection"
+                                    icon="sap-icon://undo"
+                                    key="reworkRejection"/>
+
+                            </tnt:items>
+
+                        </tnt:NavigationListItem>
+
+
+                        <!-- MAINTENANCE -->
+
+                        <tnt:NavigationListItem
+                            id="navMaintenance"
+                            text="Maintenance"
+                            icon="sap-icon://wrench">
+
+                            <tnt:items>
+
+                                <tnt:NavigationListItem
+                                    id="navEquipmentStatus"
+                                    text="Equipment Status"
+                                    icon="sap-icon://machine"
+                                    key="equipmentStatus"/>
+
+                                <tnt:NavigationListItem
+                                    id="navMaintenanceRequests"
+                                    text="Maintenance Requests"
+                                    icon="sap-icon://request"
+                                    key="maintenanceRequests"/>
+
+                                <tnt:NavigationListItem
+                                    id="navMaintenanceWorkOrders"
+                                    text="Work Orders"
+                                    icon="sap-icon://activity-items"
+                                    key="maintenanceWorkOrders"/>
+
+                            </tnt:items>
+
+                        </tnt:NavigationListItem>
+
+
+                        <!-- WAREHOUSE & INVENTORY -->
+
+                        <tnt:NavigationListItem
+                            id="navWarehouse"
+                            text="Warehouse &amp; Inventory"
+                            icon="sap-icon://database">
+
+                            <tnt:items>
+
+                                <tnt:NavigationListItem
+                                    id="navRawMaterials"
+                                    text="Raw Materials"
+                                    icon="sap-icon://product"
+                                    key="rawMaterials"/>
+
+                                <tnt:NavigationListItem
+                                    id="navFinishedProducts"
+                                    text="Finished Products"
+                                    icon="sap-icon://shipping-status"
+                                    key="finishedProducts"/>
+
+                                <tnt:NavigationListItem
+                                    id="navStorageTransfers"
+                                    text="Storage Transfers"
+                                    icon="sap-icon://move-folder"
+                                    key="storageTransfers"/>
+
+                                <tnt:NavigationListItem
+                                    id="navStockMovements"
+                                    text="Stock Movements"
+                                    icon="sap-icon://inventory"
+                                    key="stockMovements"/>
+
+                            </tnt:items>
+
+                        </tnt:NavigationListItem>
+
+
+                        <!-- PROCESS ENGINEERING -->
+
+                        <tnt:NavigationListItem
+                            id="navProcessEngineering"
+                            text="Process Engineering"
+                            icon="sap-icon://technical-object">
+
+                            <tnt:items>
+
+                                <tnt:NavigationListItem
+                                    id="navProcessParameters"
+                                    text="Process Parameters"
+                                    icon="sap-icon://settings"
+                                    key="processParameters"/>
+
+                                <tnt:NavigationListItem
+                                    id="navFormulations"
+                                    text="Formulations"
+                                    icon="sap-icon://recipe"
+                                    key="formulations"/>
+
+                                <tnt:NavigationListItem
+                                    id="navProcessDeviations"
+                                    text="Process Deviations"
+                                    icon="sap-icon://warning2"
+                                    key="processDeviations"/>
+
+                                <tnt:NavigationListItem
+                                    id="navProcessYield"
+                                    text="Yield Analysis"
+                                    icon="sap-icon://measure"
+                                    key="processYield"/>
+
+                            </tnt:items>
+
+                        </tnt:NavigationListItem>
+
+
+                        <!-- ADMINISTRATION -->
+
+                        <tnt:NavigationListItem
+                            id="navAdministration"
+                            text="Administration"
+                            icon="sap-icon://action-settings">
+
+                            <tnt:items>
+
+                                <tnt:NavigationListItem
+                                    id="navMasterData"
+                                    text="Master Data"
+                                    icon="sap-icon://database"
+                                    key="masterData"/>
+
+                                <tnt:NavigationListItem
+                                    id="navUsersRoles"
+                                    text="Users &amp; Roles"
+                                    icon="sap-icon://group"
+                                    key="usersRoles"/>
+
+                            </tnt:items>
+
+                        </tnt:NavigationListItem>
+
+                    </tnt:NavigationList>
+
+                </tnt:item>
+
+            </tnt:SideNavigation>
+
+        </tnt:sideContent>
+
+
+        <!-- EXISTING APPLICATION CONTENT -->
+
+        <tnt:mainContents>
+
+            <App
+                id="app"/>
+
+        </tnt:mainContents>
+
+    </tnt:ToolPage>
+
 </mvc:View>
